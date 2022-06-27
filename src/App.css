@@ -90,7 +90,7 @@ nav.dark .toggler--slider {
 }
 
 main.dark {
-  background-color: #121212;
+  background-color: #2b3034;
   padding-top: 10px;
 }
 
@@ -109,9 +109,8 @@ main.dark {
   margin-left: auto;
   margin-right: auto;
   padding: 40px;
-  background-color: #505050;
+  background-color: #212429;
   border-radius: 8px;
-  opacity: 0.5;
 }
 
 .box > p {
@@ -127,7 +126,7 @@ main.dark {
   font-size: 28px;
   font-weight: 500;
   line-height: 1.5;
-  color: #212529;
+  color: white;
   padding-left: 60px;
   margin-bottom: 15px;
 }
@@ -138,6 +137,13 @@ main > h1 {
   text-align: center;
 }
 
+.title-dark {
+  font-size: 70px;
+  font-weight: 800;
+  text-align: center;
+  color: white;
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -146,19 +152,38 @@ form {
   margin-right: auto;
 }
 
-input {
+.form__input {
   height: 80px;
   border-radius: 8px;
   font-size: 25px;
   padding-left: 15px;
 }
 
-input:active {
+.form__input-dark {
+  height: 80px;
+  border-radius: 8px;
+  font-size: 25px;
+  padding-left: 15px;
+  background-color: #212429;
+  border: 1px solid white;
+}
+
+input:focus {
   box-shadow: 0px 5px 15px #3bbdd4;
 }
 
 .form__label {
   position: absolute;
+  font-size: 25px;
+  padding-left: 25px;
+  padding-top: 25px;
+  cursor: text;
+  transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
+}
+
+.form__label-dark {
+  position: absolute;
+  color: white;
   font-size: 25px;
   padding-left: 25px;
   padding-top: 25px;
@@ -190,6 +215,20 @@ input:active {
   margin-left: 20px;
   margin-top: -5px;
   background-color: white;
+  font-size: 18px;
+}
+
+.form__input-dark:focus ~ .form__label-dark,
+.form__input-dark:not(:placeholder-shown).form__input-dark:not(:focus)
+  ~ .form__label-dark {
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 0px;
+  margin-left: 20px;
+  margin-top: -5px;
+  background-color: #212429;
+
+  border-radius: 5px;
   font-size: 18px;
 }
 
@@ -251,7 +290,11 @@ button:active {
   justify-content: center;
   gap: 50px;
   margin-top: 90px;
-  height: 475px;
+  height: 575px;
+}
+
+.empty-result {
+  height: 575px;
 }
 
 .infobox--balancenc {

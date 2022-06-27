@@ -77,7 +77,9 @@ export default function Home(props) {
 
   return (
     <main className={props.darkMode ? "dark" : ""}>
-      <h1>Check Natluk Coin Reputation </h1>
+      <h1 className={props.darkMode ? "title-dark" : "title"}>
+        Check Natluk Coin Reputation{" "}
+      </h1>
       <div className={props.darkMode ? "box-dark" : "box"}>
         <p>Enter your wallet address (ie, 0xd5c...)</p>
         <form onSubmit={handleSubmit}>
@@ -88,26 +90,32 @@ export default function Home(props) {
             value={wallet.address}
             onChange={handleChange}
             placeholder=" "
-            className="form__input"
+            className={props.darkMode ? "form__input-dark" : "form__input"}
             required
             minLength="42"
           />
-          <label className="form__label">Wallet Number</label>
+          <label
+            className={props.darkMode ? "form__label-dark" : "form__label"}
+          >
+            Wallet Number
+          </label>
           {wallet.address !== "" ? (
-            <span className="form__`span" onClick={removeAddress}>
+            <span className="form__span" onClick={removeAddress}>
               X
             </span>
           ) : null}
           <button>Submit</button>
         </form>
       </div>
-      {wallet.isComplet && (
+      {wallet.isComplet ? (
         <InfoBox
           balance={walletData.ncBalance}
           time={walletData.timeInNc}
           earn={walletData.earn}
           lpBalance={walletData.lp}
         />
+      ) : (
+        <div className="empty-result"></div>
       )}
     </main>
   );
