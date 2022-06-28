@@ -5,11 +5,11 @@ export default function InfoBox(props) {
     <div className="infobox">
       <div className="infobox--balancenc">
         <h2>$ {props.balance}</h2>
-        <div>NC Balance</div>
+        <div>Natluk Coin Balance</div>
       </div>
       <div className="infobox--balancelp">
         <h2>$ {props.lpBalance}</h2>
-        <div>LP Balance</div>
+        <div>LP Token Balance</div>
       </div>
       <div className="infobox--time">
         <h2>{props.time} days</h2>
@@ -17,7 +17,7 @@ export default function InfoBox(props) {
       </div>
       <div className="infobox--earn">
         <h2>$ {props.earn}</h2>
-        <div>How many NC earn?</div>
+        <div>Earn NC from Yield Farming</div>
       </div>
     </div>
   );
