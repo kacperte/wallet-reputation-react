@@ -9,7 +9,7 @@ export default function Home(props) {
 
   const [walletData, setwalletData] = useState({
     address: "",
-    timeInNc: "",
+    paperHands: false,
     ncBalance: "",
     earn: "",
     lp: "",
@@ -34,10 +34,11 @@ export default function Home(props) {
           throw response;
         })
         .then((data) => {
+          console.log(data)
           setwalletData((prevData) => ({
             ...prevData,
             address: data.adress,
-            timeInNc: data.time_in_nc,
+            paperHands: data.paper_hands,
             ncBalance: data.nc_balance,
             earn: data.claim_balance,
             lp: data.lp_balance,
@@ -93,6 +94,7 @@ export default function Home(props) {
             className={props.darkMode ? "form__input-dark" : "form__input"}
             required
             minLength="42"
+            maxLength="42"
           />
           <label
             className={props.darkMode ? "form__label-dark" : "form__label"}

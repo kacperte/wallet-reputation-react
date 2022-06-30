@@ -12,8 +12,8 @@ export default function InfoBox(props) {
         <div>LP Token Balance</div>
       </div>
       <div className="infobox--time">
-        <h2>{props.time} days</h2>
-        <div>How long hold NC?</div>
+        <h2>{props.time ? <>True</> : <>False</>}</h2>
+        <div>Paper Hands?</div>
       </div>
       <div className="infobox--earn">
         <h2>$ {props.earn}</h2>
