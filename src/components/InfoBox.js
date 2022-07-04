@@ -5,7 +5,7 @@ export default function InfoBox(props) {
     <div className="infobox">
       <div className="infobox--balancenc">
         <h2>$ {props.balance}</h2>
-        <div>Natluk Coin Balance</div>
+        <div>NC Balance</div>
       </div>
       <div className="infobox--balancelp">
         <h2>$ {props.lpBalance}</h2>

@@ -5,6 +5,7 @@ export default function Home(props) {
   const [wallet, setWallet] = useState({
     address: "",
     isOk: false,
+    error: false
   });
 
   const [walletData, setwalletData] = useState({
@@ -13,7 +14,7 @@ export default function Home(props) {
     ncBalance: "",
     earn: "",
     lp: "",
-  }); 
+  });
 
   function handleChange(event) {
     event.preventDefault();
@@ -27,27 +28,36 @@ export default function Home(props) {
   function handleSubmit(event) {
     event.preventDefault();
     fetch(`https://wallet-reputation.herokuapp.com/wallet/${wallet.address}`)
-        .then((response) => {
-          if (response.ok) {
-            setWallet((prevWallet) => ({
-              ...prevWallet,
-              isOk: true,
-            }));
-            return response.json();
-          }
-          throw response;
-        })
-        .then((data) => {
-          console.log(data);
-          setwalletData((prevData) => ({
-            ...prevData,
-            address: data.adress,
-            paperHands: data.paper_hands,
-            ncBalance: data.nc_balance,
-            earn: data.claim_balance,
-            lp: data.lp_balance,
+      .then((response) => {
+        if (response.ok) {
+          setWallet((prevWallet) => ({
+            ...prevWallet,
+            isOk: true,
+            error: false
           }));
-        });
+          return response.json();
+        }
+        else {
+          setWallet(prevWallet => ({
+            ...prevWallet,
+            error: true,
+            isOk: false
+          }))
+        }
+        console.log(wallet)
+        throw response;
+      })
+      .then((data) => {
+        console.log(data);
+        setwalletData((prevData) => ({
+          ...prevData,
+          address: data.adress,
+          paperHands: data.paper_hands,
+          ncBalance: data.nc_balance,
+          earn: data.claim_balance,
+          lp: data.lp_balance,
+        }));
+      });
   }
 
   function removeAddress() {
@@ -86,15 +96,16 @@ export default function Home(props) {
             onChange={handleChange}
             placeholder=" "
             className={props.darkMode ? "form__input-dark" : "form__input"}
-            required
-            minLength="42"
-            maxLength="42"
+            //required
+            //minLength="42"
+            //maxLength="42"
           />
           <label
             className={props.darkMode ? "form__label-dark" : "form__label"}
           >
             Wallet Number
           </label>
+          {wallet.error ? <div className="form__error">Error with address(s): {wallet.address}</div> : <></>}
           {wallet.address !== "" ? (
             <span className="form__span" onClick={removeAddress}>
               X

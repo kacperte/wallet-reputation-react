@@ -192,6 +192,17 @@ input:focus {
   transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
 }
 
+.form__error{
+  width: fit-content;
+  height: 30px;
+  margin-top: 10px;
+  padding: 5px;
+
+  border-radius: 8px;
+  background-color: rgba(220,53,69,.9);
+  color: white;
+}
+
 .form__span {
   padding-top: 1px;
   position: absolute;
