@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import InfoBox from "./InfoBox";
 
 export default function Home(props) {
   const [wallet, setWallet] = useState({
     address: "",
     isOk: false,
-    error: false
+    error: false,
   });
 
   const [walletData, setwalletData] = useState({
@@ -33,18 +33,17 @@ export default function Home(props) {
           setWallet((prevWallet) => ({
             ...prevWallet,
             isOk: true,
-            error: false
+            error: false,
           }));
           return response.json();
-        }
-        else {
-          setWallet(prevWallet => ({
+        } else {
+          setWallet((prevWallet) => ({
             ...prevWallet,
             error: true,
-            isOk: false
-          }))
+            isOk: false,
+          }));
         }
-        console.log(wallet)
+        console.log(wallet);
         throw response;
       })
       .then((data) => {
@@ -105,7 +104,13 @@ export default function Home(props) {
           >
             Wallet Number
           </label>
-          {wallet.error ? <div className="form__error">Error with address(s): {wallet.address}</div> : <></>}
+          {wallet.error ? (
+            <div className="form__error">
+              Error with address(s): {wallet.address}
+            </div>
+          ) : (
+            <></>
+          )}
           {wallet.address !== "" ? (
             <span className="form__span" onClick={removeAddress}>
               X
