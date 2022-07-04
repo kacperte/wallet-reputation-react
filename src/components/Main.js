@@ -4,7 +4,7 @@ import InfoBox from "./InfoBox";
 export default function Home(props) {
   const [wallet, setWallet] = useState({
     address: "",
-    isComplet: false,
+    isOk: false,
   });
 
   const [walletData, setwalletData] = useState({
@@ -13,7 +13,7 @@ export default function Home(props) {
     ncBalance: "",
     earn: "",
     lp: "",
-  });
+  }); 
 
   function handleChange(event) {
     event.preventDefault();
@@ -24,17 +24,21 @@ export default function Home(props) {
     }));
   }
 
-  useEffect(
-    function () {
-      fetch(`https://wallet-reputation.herokuapp.com/wallet/${wallet.address}`)
+  function handleSubmit(event) {
+    event.preventDefault();
+    fetch(`https://wallet-reputation.herokuapp.com/wallet/${wallet.address}`)
         .then((response) => {
           if (response.ok) {
+            setWallet((prevWallet) => ({
+              ...prevWallet,
+              isOk: true,
+            }));
             return response.json();
           }
           throw response;
         })
         .then((data) => {
-          console.log(data)
+          console.log(data);
           setwalletData((prevData) => ({
             ...prevData,
             address: data.adress,
@@ -44,22 +48,12 @@ export default function Home(props) {
             lp: data.lp_balance,
           }));
         });
-    },
-    [wallet]
-  );
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    setWallet((prevWallet) => ({
-      ...prevWallet,
-      isComplet: true,
-    }));
   }
 
   function removeAddress() {
     document.getElementById("address").value = "";
     setWallet((prevWallet) => ({
-      isComplet: false,
+      isOk: false,
       address: "",
     }));
   }
@@ -109,7 +103,7 @@ export default function Home(props) {
           <button>Submit</button>
         </form>
       </div>
-      {wallet.isComplet ? (
+      {wallet.isOk ? (
         <InfoBox
           balance={walletData.ncBalance}
           time={walletData.timeInNc}
