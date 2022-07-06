@@ -192,14 +192,14 @@ input:focus {
   transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
 }
 
-.form__error{
+.form__error {
   width: fit-content;
   height: 30px;
   margin-top: 10px;
   padding: 5px;
 
   border-radius: 8px;
-  background-color: rgba(220,53,69,.9);
+  background-color: rgba(220, 53, 69, 0.9);
   color: white;
 }
 
@@ -313,7 +313,7 @@ button:active {
   background-color: #fae3e3;
 }
 
-.infobox--time {
+.infobox--paperHands {
   background-color: #f7d4bc;
 }
 
@@ -325,11 +325,16 @@ button:active {
   background-color: #c98bb9;
 }
 
-.infobox--time,
+.infobox--soldNc {
+  background-color: #FEFCAD;
+}
+
+.infobox--paperHands,
 .infobox--balancenc,
 .infobox--earn,
-.infobox--balancelp {
-  width: 240px;
+.infobox--balancelp,
+.infobox--soldNc {
+  width: 260px;
   height: 150px;
   border-radius: 8px;
   text-align: center;
@@ -337,17 +342,50 @@ button:active {
 }
 
 .infobox--balancenc > h2,
-.infobox--time > h2,
+.infobox--paperHands > h2,
 .infobox--earn > h2,
-.infobox--balancelp > h2 {
-  font-size: 2.3em;
+.infobox--balancelp > h2,
+.infobox--soldNc > h2 {
+  font-size: 2.3rem;
   margin: 20px;
   font-weight: 700;
 }
 
 .infobox--balancenc > div,
-.infobox--time > div,
+.infobox--paperHands > div,
 .infobox--earn > div,
-.infobox--balancelp > div {
+.infobox--balancelp > div,
+.infobox--soldNc > div {
   font-size: 1.5rem;
+}
+
+.icon-info {
+  width: 25px;
+  padding-top: 5px;
+}
+
+.info_cloud {
+  background-color: white;
+  border-radius: 10%;
+  padding: 15px;
+  font-size: 0.9rem;
+  text-align: justify;
+  font-style: oblique;
+  width: 80%;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0px;
+}
+
+.info_cloud_arrow{
+  width: 0px; 
+  height: 0px; 
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  border-bottom: 10px solid rgb(255, 255, 255);
+  
 }

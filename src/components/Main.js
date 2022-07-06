@@ -11,6 +11,7 @@ export default function Home(props) {
   const [walletData, setwalletData] = useState({
     address: "",
     paperHands: false,
+    soldNC: 0,
     ncBalance: "",
     earn: "",
     lp: "",
@@ -52,6 +53,7 @@ export default function Home(props) {
           ...prevData,
           address: data.adress,
           paperHands: data.paper_hands,
+          soldNC: data.sold_nc,
           ncBalance: data.nc_balance,
           earn: data.claim_balance,
           lp: data.lp_balance,
@@ -122,9 +124,10 @@ export default function Home(props) {
       {wallet.isOk ? (
         <InfoBox
           balance={walletData.ncBalance}
-          time={walletData.timeInNc}
+          paperHands={walletData.paperHands}
           earn={walletData.earn}
           lpBalance={walletData.lp}
+          soldNC={walletData.soldNC}
         />
       ) : (
         <div className="empty-result"></div>
