@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import InfoBox from "./InfoBox";
+import Table from "./Tabel";
 
 export default function Home(props) {
   const [wallet, setWallet] = useState({
@@ -17,6 +18,8 @@ export default function Home(props) {
     lp: "",
   });
 
+  const [tableData, setTableData] = useState();
+
   function handleChange(event) {
     event.preventDefault();
     const { name, value } = event.target;
@@ -28,7 +31,9 @@ export default function Home(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    fetch(`https://wallet-reputation.herokuapp.com/wallet/${wallet.address}`)
+    fetch(
+      `https://wallet-reputation.herokuapp.com/wallet/wallet/${wallet.address}`
+    )
       .then((response) => {
         if (response.ok) {
           setWallet((prevWallet) => ({
@@ -48,7 +53,6 @@ export default function Home(props) {
         throw response;
       })
       .then((data) => {
-        console.log(data);
         setwalletData((prevData) => ({
           ...prevData,
           address: data.adress,
@@ -60,6 +64,19 @@ export default function Home(props) {
         }));
       });
   }
+
+  useEffect(() => {
+    fetch(
+      `https://wallet-reputation.herokuapp.com/wallet/transactions/${wallet.address}`
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data)
+        setTableData(data);
+      });
+  }, [wallet.address]);
 
   function removeAddress() {
     document.getElementById("address").value = "";
@@ -122,16 +139,21 @@ export default function Home(props) {
         </form>
       </div>
       {wallet.isOk ? (
-        <InfoBox
-          balance={walletData.ncBalance}
-          paperHands={walletData.paperHands}
-          earn={walletData.earn}
-          lpBalance={walletData.lp}
-          soldNC={walletData.soldNC}
-        />
+        <div>
+          <InfoBox
+            balance={walletData.ncBalance}
+            paperHands={walletData.paperHands}
+            earn={walletData.earn}
+            lpBalance={walletData.lp}
+            soldNC={walletData.soldNC}
+          />
+          
+        </div>
       ) : (
         <div className="empty-result"></div>
       )}
     </main>
   );
 }
+
+//<Table data={tableData} />
