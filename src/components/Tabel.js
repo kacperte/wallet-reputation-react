@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 
 export default function Table(props) {
-    const dataForTable = props.data
+  const dataForTable = props.data;
+  const keys = ["ID", "Method", "From", "Quantity", "Datetime", "Hash", "To"];
+
   return (
-    <table>
+    <table className="content-table">
       <tr key={"headers"}>
-        {Object.keys(dataForTable[0]).map((key) => (
+        {keys.map((key) => (
           <th>{key}</th>
         ))}
       </tr>

@@ -73,7 +73,7 @@ export default function Home(props) {
         return response.json();
       })
       .then((data) => {
-        console.log(data)
+        console.log(data);
         setTableData(data);
       });
   }, [wallet.address]);
@@ -147,7 +147,7 @@ export default function Home(props) {
             lpBalance={walletData.lp}
             soldNC={walletData.soldNC}
           />
-          
+          <Table data={tableData} />
         </div>
       ) : (
         <div className="empty-result"></div>
@@ -156,4 +156,4 @@ export default function Home(props) {
   );
 }
 
-//<Table data={tableData} />
+//

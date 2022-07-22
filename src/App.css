@@ -302,7 +302,7 @@ button:active {
   justify-content: center;
   gap: 50px;
   margin-top: 90px;
-  height: 575px;
+  height: 235px;
 }
 
 .empty-result {
@@ -392,8 +392,28 @@ button:active {
 
 th,
 td {
-  border: 1px solid black;
   margin: 0px 0px;
-  padding: 5px 5px;
+  padding: 10px 15px;
   font-size: 0.9rem;
+}
+
+th {
+  text-align: left;
+  background-color: #38b4c9;
+  color: white;
+  font-weight: bold;
+}
+
+td {
+  border-bottom: 1px solid #dddddd;
+}
+
+.content-table {
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 100px;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgb(0,0,0,0.15);
 }
