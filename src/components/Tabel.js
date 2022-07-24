@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 export default function Table(props) {
   const dataForTable = props.data;
-  const keys = ["ID", "Hash", "Datetime", "From", "Method", "To", "Quantity"];
+  const keys = ["ID", "Method", "From", "Quantity", "Hash", "Datetime", "To"];
 
   return (
     <table className="content-table">
