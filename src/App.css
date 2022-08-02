@@ -418,3 +418,28 @@ td {
   box-shadow: 0 0 20px rgb(0,0,0,0.15);
   max-width: 500px;
 }
+
+.textWithLogo {
+  display: flex;
+  align-items: center;
+  font-size: 35px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: black;
+  padding-left: 60px;
+}
+
+.textWithLogo-dark {
+  display: flex;
+  align-items: center;
+  font-size: 35px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: white;
+  padding-left: 60px;
+}
+
+.metamask-logo {
+  margin-left: 10px;
+  width: 30px;
+}

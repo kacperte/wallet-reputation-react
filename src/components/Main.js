@@ -20,6 +20,22 @@ export default function Home(props) {
 
   const [tableData, setTableData] = useState();
 
+  function metMaskConnect() {
+    if (window.ethereum) {
+      console.log("OK");
+    } else {
+      alert("install metamask extension!!");
+    }
+    
+    window.ethereum.request({ method: "eth_requestAccounts" }).then((res) => {
+      setWallet((prevWallet) => ({
+        ...prevWallet,
+        address: res,
+      }))
+      ;
+    });
+  }
+
   function handleChange(event) {
     event.preventDefault();
     const { name, value } = event.target;
@@ -104,7 +120,15 @@ export default function Home(props) {
         Check Natluk Coin Reputation{" "}
       </h1>
       <div className={props.darkMode ? "box-dark" : "box"}>
-        <p>Enter your wallet address (ie, 0xd5c...)</p>
+        <div className={props.darkMode ? "textWithLogo-dark" : "textWithLogo"}>
+          <p>Enter your wallet address (ie, 0xd5c...4f) or use</p>
+          <img
+            className="metamask-logo"
+            src="https://i.ibb.co/xg0zRrb/metamask.png"
+            alt="MetaMask logo"
+            onClick={metMaskConnect}
+          />
+        </div>
         <form onSubmit={handleSubmit}>
           <input
             type="text"

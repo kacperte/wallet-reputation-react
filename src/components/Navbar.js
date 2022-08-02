@@ -1,6 +1,7 @@
 import React from "react";
 
 export default function Header(props) {
+
   return (
     <nav className={props.darkMode ? "dark" : ""}>
       <div className="nav-logo">
